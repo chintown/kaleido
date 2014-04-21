@@ -1,3 +1,3 @@
 <?php
-    define('SITE_CODE', 'kaleidoscope');
+    define('SITE_CODE', 'kaleido');
     define('CURRENT_HOST', '0');
