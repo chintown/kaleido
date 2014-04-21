@@ -18,7 +18,7 @@
                     <div class="ch" hidden><?=$headline['ch']?></div>
                     <div class="query" hidden><?=purify($headline['en_highlight'], 'url')?></div>
                 </a>
-                <a href="lookup?query=<?=purify($headline['en_highlight'], 'url')?>" data-ajax="false"></a>
+                <a href="lookup.php?query=<?=purify($headline['en_highlight'], 'url')?>" data-ajax="false"></a>
             </li>
         <?php
         }
