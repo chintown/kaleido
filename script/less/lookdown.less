@@ -1,0 +1,48 @@
+@import "main.inc.less";
+
+
+.buckets {
+  -webkit-perspective: 500px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-perspective-origin-y: 99%;
+}
+.bucket {
+  border-top: solid 12px lightsteelblue;
+}
+
+.meta, .ui-btn-icon-right:after {
+  z-index: 10;
+
+  line-height: 2em;
+}
+.level {
+  position: relative; // make z-index works
+}
+.percentage-index {
+  z-index: 1;
+
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  text-indent: -9999px;
+  overflow: hidden;
+
+  background: #B8E4F5;
+}
+
+.capacity-index {
+  z-index: 2;
+
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  text-indent: -9999px;
+  overflow: hidden;
+
+  border-right: 2px solid lightgoldenrodyellow;
+  background-color: transparent;
+}
