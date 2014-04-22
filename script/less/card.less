@@ -1,0 +1,24 @@
+@import "main.inc.less";
+
+body {
+  overflow: hidden; /* this is important to prevent the whole page to bounce */
+}
+
+.flickr {
+  width: auto;
+  height: 200px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+
+  .item {
+    display: inline-block;
+    height: 100%;
+  }
+  img {
+    height: 100%;
+  }
+}
