@@ -7,5 +7,7 @@
     // remote (for linode dev) | local (for Mac dev)
     define('ENV','local');
 
+    define('MOBILE_APP_ICON', true);
+
     define('AUTH_COOKIE_SECONDS', 60*60*24); // 24hr
 
