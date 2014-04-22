@@ -1,20 +1,21 @@
 <?php
     function get($req, $res) {
-        $param = pickup($req, 'query', 'source');
+        $param = pickup($req, 'query', 'source', 'sentence');
         $query = $param['query'];
         $source = $param['source'];
+        $sentence = purify($param['sentence'], 'urldecode');
 
         $source = empty($source ) ? 'lookup' : $source ;
-        $url = empty($query) ? '' : get_source_url($source).$query;
+        $url = empty($query) ? '' : get_source_url($source, $sentence).$query;
 
         $res['source'] = $source;
         $res['query'] = purify($query, 'html');
         $res['url'] = $url;
     }
 
-    function get_source_url($source) {
+    function get_source_url($source, $sentence) {
         $dict = array(
-            'lookup'=> 'http://www.chintown.org/lookup/?query=',
+            'lookup'=> 'http://www.chintown.org/lookup/?sentence='.purify($sentence, 'url').'&query=',
             'wordnik'=> "http://www.wordnik.com/words/",
             'ciku'=> "http://m.nciku.com/en/en/detail/?query=",
             'termly'=> "http://term.ly/",
