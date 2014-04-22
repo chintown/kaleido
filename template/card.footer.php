@@ -2,9 +2,8 @@
 <?php // leave file path as plain text (rather than php var) for better gen_js.py parsing
 // keep the sequence of html attribute so that parser can get correct js files
 if (DEV_MODE) { ?>
-        <script type="text/javascript" src="<?=PARENT_WEB_PATH?>/js/vendor/iscroll.js"></script>
 <?php } else { ?>
-        <script src="<?=WEB_PATH?>/js/card.lib.min.js" type="text/javascript"></script>
+        <!-- <script src="<?=WEB_PATH?>/js/card.lib.min.js" type="text/javascript"></script> -->
 <?php } ?>
 <?php // leave file path as plain text (rather than php var) for better gen_js.py parsing
 if (DEV_MODE) { ?>
