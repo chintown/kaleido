@@ -9,7 +9,7 @@
 <div id="deck">
     <? foreach ($r_cards as $card) { ?>
     <div class="card">
-        <div class="word"><?=$card['word']?></div>
+        <h3 class="word"><?=$card['word']?></h3>
 
         <div class="forgot"><?=$card['forgot']?></div>
 
@@ -17,6 +17,10 @@
         <div class="tip"><?=$card['tip']?></div>
 
         <div class="sentence"><?=$card['sentence']?></div>
+
+        <ul class="flickr"></ul>
+        <div class="map"></div>
+
     </div>
     <? } ?>
 </div>

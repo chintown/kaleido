@@ -1,19 +1,14 @@
 // "use strict";
-function initIscroll() {
-    myScroll = new IScroll('.wrapper', { mouseWheel: true });
-}
 function loadFlickr(word, $card) {
     $.ajax({
             url: 'http://www.chintown.org:9000/flickr/?query='+word
         })
         .done(function (response) {
-            var $flickr = $('<ul class="flickr"></ul>');
+            var $flickr = $('.flickr');
             $.each(response.result, function(idx, obj) {
                 var $img = $('<img>').attr('src', obj.src);
                 $flickr.append($('<li>').addClass('item').append($img));
             });
-            $card.append($flickr);
-            //initIscroll();
         });
 }
 function loadMap(word, $card) {
@@ -21,7 +16,7 @@ function loadMap(word, $card) {
             url: 'http://www.chintown.org:9000/map/?query='+word
         })
         .done(function (response) {
-            $card.append($('<div class="map"></div>').append($(response.result)));
+            $('.map').append($(response.result));
         });
 }
 // -----
@@ -33,7 +28,11 @@ function loadResources(word, $card) {
 function bindEvents() {
     de.time();
 }
+function override_head() {
+    $('#page_header').find('h3').text($('.word').text());
+}
 function init() {
+    override_head()
     bindEvents();
     $('.card').each(function (idx, card) {
         loadResources($(card).find('.word').text(), $(card));
