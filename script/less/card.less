@@ -1,11 +1,43 @@
 @import "main.inc.less";
 
-body {
-  overflow: hidden; /* this is important to prevent the whole page to bounce */
+#deck {
+  padding: 10px;
+  background-color: lightgray;
 }
+
+.card {
+  padding: 10px;
+//  background-color: white;
+  background-image: url('../img/paper.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+//  border: 4px solid #a9a9a9;
+  .box-shadow(1px 1px 20px gray);
+  .radius(10px);
+  border-top-right-radius: 60px;
+
+  position: relative;
+}
+//.card:after {
+//  content: ' ';
+//  position: absolute;
+//  right: 0;
+//  top: 0;
+//  .l-size-square(60px);
+//  border: none;
+//  border-bottom: 4px solid #a9a9a9;
+//  border-left: 4px solid #a9a9a9;
+//}
 
 .word {
   display: none;
+}
+
+.forgot {
+  position: absolute;
+  right: 30px;
+  top: 10px;
 }
 
 .flickr {

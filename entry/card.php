@@ -6,20 +6,19 @@
     //require 'core/authentication.php';
 ?>
 
-<div id="deck">
+<div id="deck" data-role="content">
     <? foreach ($r_cards as $card) { ?>
     <div class="card">
         <h3 class="word"><?=$card['word']?></h3>
-
         <div class="forgot"><?=$card['forgot']?></div>
+
+        <div class="sentence"><?=$card['sentence']?></div>
+        <div class="map"></div>
+        <ul class="flickr"></ul>
 
         <div class="meaning"><?=$card['meaning']?></div>
         <div class="tip"><?=$card['tip']?></div>
 
-        <div class="sentence"><?=$card['sentence']?></div>
-
-        <ul class="flickr"></ul>
-        <div class="map"></div>
 
     </div>
     <? } ?>
