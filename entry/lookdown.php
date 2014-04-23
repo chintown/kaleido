@@ -16,7 +16,7 @@
             $capacity_index = 100 * floatval($bucket['capacity']) / $max;
             ?>
             <li class="bucket">
-                <a href="card.php?level=<?=$bucket['level']?>&sidx=<?=$bucket['sidx']?>" data-ajax="false">
+                <a href="card.php?level=<?=$bucket['level']?>&num=<?=$bucket['num']?>&sidx=<?=$bucket['sidx']?>" data-ajax="false" data-transition="slide">
                     <h2 class="meta level">Lv <?=$bucket['level']?> — <?=$bucket['capacity']?></h2>
                     <span class="meta num ui-li-count"><?=$bucket['num']?></span>
                     <span class="percentage-index" style="width: <?=$num_index?>%"><?=$num_index?>%</span>

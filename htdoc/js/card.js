@@ -28,11 +28,16 @@ function loadResources(word, $card) {
 function bindEvents() {
     de.time();
 }
+function setup_pagers() {
+    $('#page_header').prepend($('#prev'));
+    $('#page_header').append($('#next'));
+}
 function override_head() {
     $('#page_header').find('h3').text($('.word').text());
 }
 function init() {
-    override_head()
+    override_head();
+    setup_pagers();
     bindEvents();
     $('.card').each(function (idx, card) {
         loadResources($(card).find('.word').text(), $(card));

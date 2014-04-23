@@ -25,6 +25,17 @@
 </div>
 
 <?php
+    $prev = ($r_sidx == 0) ? 0 : $r_sidx-1;
+    $next = ($r_sidx == $r_num-1) ? $r_num-1 : $r_sidx+1;
+?>
+<a id="prev" href="<?=$r_param_prefix?>&sidx=<?=$prev?>"
+   class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-carat-l"
+   data-ajax="false">&nbsp;</a>
+<a id="next" href="<?=$r_param_prefix?>&sidx=<?=$next?>"
+   class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-carat-r"
+   data-ajax="false">&nbsp;</a>
+
+<?php
     add_extra_footer('card.footer.php');
     require('template/jquery.mobile.footer.php');
 ?>
