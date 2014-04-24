@@ -21,6 +21,7 @@ mark {
   .radius(10px);
 //  border-top-right-radius: 60px;
 
+  min-height: 320px;
   position: relative;
 }
 //.card:after {
@@ -39,14 +40,49 @@ mark {
 }
 
 .forgot {
-  position: absolute;
-  right: 30px;
-  top: 10px;
+  display: none;
+}
+
+.map {
+  width: 100px;
+  height: 150px;
+  overflow-x: scroll;
+
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  img {
+    height: 100%;
+  }
+
+  float: left;
+}
+
+.sentences {
+  list-style: none;
+
+  width: auto;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+
+  margin-top: 10px;
+  padding: 0;
+
+  clear: both;
+}
+.sentence {
+  display: inline-block;
+
+  white-space: normal;
+  vertical-align: top;
 }
 
 .flickr {
-  width: auto;
-  height: 200px;
+  width: 170px;
+  height: 150px;
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -61,4 +97,8 @@ mark {
   img {
     height: 100%;
   }
+
+  float: right;
+  margin: 0;
+  padding: 0;
 }

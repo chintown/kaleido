@@ -13,7 +13,17 @@
     function get_card($level, $idx) {
         $raw = file_get_contents('http://www.chintown.org/lookup/api.php?target=card&level='.$level.'&sidx='.$idx);
         $json = json_decode($raw, true);
+
+        $json['result']['sentence'] = parseSentences($json['result']['sentence']);
         return $json['result'];
+    }
+    function parseSentences($raw) {
+        $parts = preg_split('/([.]?.▇)|([.] )/', $raw);
+        $parts = map($parts, 'trim', false);
+        $parts = array_filter($parts, function($v) {return !empty($v);});
+        //de($raw);
+        //de($parts);
+        return $parts;
     }
     function update_sidx($level, $idx) {
         file_get_contents('http://www.chintown.org/lookup/api.php?target=_jump&level='.$level.'&sidx='.$idx);
