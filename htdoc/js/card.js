@@ -19,11 +19,22 @@ function loadMap(word, $card) {
             $('.map').append($(response.result));
         });
 }
+function loadThesaurus(word, $card) {
+    $.ajax({
+        url: 'http://www.chintown.org:9000/thesaurus/?query='+word
+    })
+        .done(function (response) {
+            var parts = response.result.join('');
+            $('.thesaurus').append($('<ul></ul>').html(parts));
+        });
+}
+
 // -----
 function loadResources(word, $card) {
     de.time('load', word, $card);
     loadFlickr(word, $card);
     loadMap(word, $card);
+    loadThesaurus(word, $card);
 }
 function bindEvents() {
     de.time();
@@ -45,11 +56,11 @@ function setup_pronunciation() {
     });
 }
 function setup_tip_control() {
-    $('.meaning, .tip').hide();
+    $('.meaning, .tip, .thesaurus').hide();
     $('.card_flipper').on('click', function() {
 
         $('.map, .flickr, .sentences').toggle();
-        $('.meaning, .tip').toggle();
+        $('.meaning, .tip, .thesaurus').toggle();
     });
 }
 function setup_answer_control() {

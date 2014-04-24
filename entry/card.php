@@ -25,6 +25,8 @@
         <div class="meaning"><?=$card['meaning']?></div>
         <hr>
         <div class="tip"><?=$card['tip']?></div>
+        <hr>
+        <div class="thesaurus"></div>
 
         <div class="ui-icon"></div>
 
