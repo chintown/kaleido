@@ -28,6 +28,39 @@ function loadResources(word, $card) {
 function bindEvents() {
     de.time();
 }
+function setup_answer_control() {
+    $('#answer_control').prependTo($('div[data-role="footer"]'));
+
+    var word = $('#page_header').find('h3').text();
+    var level = parseInt(getLinkParam('level'), 10);
+    var num = parseInt(getLinkParam('num'), 10);
+    var sidx = parseInt(getLinkParam('sidx'), 10);
+    var nextIdx = sidx;
+    if (num == 2) {
+        nextIdx = 0;
+    } else if (sidx == (num - 1)) {
+        nextIdx = 0;
+    }
+    var nextUrl = 'card.php?level='+level+'&num='+(num-1)+'&sidx='+nextIdx;
+    var callback = function(action) {
+        var url = "http://www.chintown.org/lookup/api.php?target="+action+"&level="+level+"&word="+word;
+        $.ajax({
+            url: url,
+            success: function (response) {
+                window.location.href = nextUrl;
+            } ,
+            error: function () {
+                window.location.href = nextUrl;
+            }
+        });
+    };
+    $('#answer_good').on('click', function () {
+        callback('_move');
+    });
+    $('#answer_bad').on('click', function () {
+        callback('_reset');
+    });
+}
 function setup_pagers() {
     $('#page_header').prepend($('#prev'));
     $('#page_header').append($('#next'));
@@ -38,6 +71,7 @@ function override_head() {
 function init() {
     override_head();
     setup_pagers();
+    setup_answer_control();
     bindEvents();
     $('.card').each(function (idx, card) {
         loadResources($(card).find('.word').text(), $(card));
