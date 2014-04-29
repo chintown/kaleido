@@ -11,3 +11,6 @@
 
     define('AUTH_COOKIE_SECONDS', 60*60*24); // 24hr
 
+    // facebook
+    define('FB_APP_ID', '679538345446379');
+    define('FB_APP_SECRET', '');
