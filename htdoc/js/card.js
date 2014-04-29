@@ -28,6 +28,14 @@ function loadThesaurus(word, $card) {
             $('.thesaurus').append($('<ul></ul>').html(parts));
         });
 }
+function loadDefinition(word, $card) {
+    $.ajax({
+        url: 'http://www.chintown.org:9000/definition/?query='+word
+    })
+        .done(function (response) {
+            $('.definition').append($(response.result));
+        });
+}
 
 // -----
 function loadResources(word, $card) {
@@ -35,6 +43,7 @@ function loadResources(word, $card) {
     loadFlickr(word, $card);
     loadMap(word, $card);
     loadThesaurus(word, $card);
+    loadDefinition(word, $card);
 }
 function bindEvents() {
     de.time();
@@ -56,11 +65,11 @@ function setup_pronunciation() {
     });
 }
 function setup_tip_control() {
-    $('.meaning, .tip, .thesaurus').hide();
+    $('.meaning, .tip, .thesaurus, .definition').hide();
     $('.card_flipper').on('click', function() {
 
         $('.map, .flickr, .sentences').toggle();
-        $('.meaning, .tip, .thesaurus').toggle();
+        $('.meaning, .tip, .thesaurus, .definition').toggle();
     });
 }
 function setup_answer_control() {
@@ -76,8 +85,9 @@ function setup_answer_control() {
     } else if (sidx == (num - 1)) {
         nextIdx = 0;
     }
-    var nextUrl = 'card.php?level='+level+'&num='+(num-1)+'&sidx='+nextIdx;
     var callback = function(action) {
+        var nextNum = (action === '_reset') && (level == 1) ? num : num - 1;
+        var nextUrl = 'card.php?level='+level+'&num='+nextNum+'&sidx='+nextIdx;
         var url = "http://www.chintown.org/lookup/api.php?target="+action+"&level="+level+"&word="+word;
         $.ajax({
             url: url,
