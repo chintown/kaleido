@@ -36,7 +36,16 @@ function loadDefinition(word, $card) {
             $('.definition').append($(response.result));
         });
 }
-
+function loadGre(word, $card) {
+    $.ajax({
+        url: 'http://www.chintown.org/www2/service/vocabulary/wf.php?query='+word
+    })
+        .done(function (response) {
+            if (response !== '') {
+                $card.addClass('gre');
+            }
+        });
+}
 // -----
 function loadResources(word, $card) {
     de.time('load', word, $card);
@@ -44,6 +53,7 @@ function loadResources(word, $card) {
     loadMap(word, $card);
     loadThesaurus(word, $card);
     loadDefinition(word, $card);
+    loadGre(word, $card);
 }
 function bindEvents() {
     de.time();
