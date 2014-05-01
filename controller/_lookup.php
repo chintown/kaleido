@@ -5,9 +5,9 @@
         $source = $param['source'];
         $sentence = purify($param['sentence'], 'urldecode');
 
-        if (empty($query)) {
-            $source = 'random_lookup';
-        }
+//        if (empty($query)) {
+//            $source = 'random_lookup';
+//        }
 
         $source = empty($source ) ? 'lookup' : $source ;
         $url = get_source_url($source, $sentence).$query;
