@@ -57,6 +57,36 @@ function loadResources(word, $card) {
 }
 function bindEvents() {
     de.time();
+    var $modal = $('#sentence_modal');
+    var editingCallback;
+    $('.sentence').on('click', function () {
+        var $self = $(this);
+        var $textarea = $modal.find('textarea');
+        $textarea.text($self.text());
+        $modal.popup('open');
+        editingCallback = function() {
+            $self.text($textarea.val());
+        };
+    });
+    $('#sentence_submit').on('click', function () {
+        $modal.popup('close');
+        editingCallback();
+        var sentences = [];
+        $('.sentence').each(function(idx, item) {
+            var $parts = $(item).text().split("\n");
+            for(var $i in $parts) {
+                sentences.push($parts[$i]);
+            }
+        });
+        $.post('http://www.chintown.org/lookup/api.php', {
+            'target': '_sentences',
+            'word':$('h3.word').text(),
+            'sentence': sentences.join(".  ")
+        });
+    });
+    $('#sentence_cancel').on('click', function () {
+        $modal.popup('close');
+    });
 }
 function setup_sentences() {
     $('.sentence').css('width', $(window).width()*0.9 - 50);
@@ -85,7 +115,7 @@ function setup_tip_control() {
 function setup_answer_control() {
     $('#answer_control').prependTo($('div[data-role="footer"]'));
 
-    var word = encodeURI($('.word').text());
+    var word = encodeURI($('h3.word').text());
     var level = parseInt(getLinkParam('level'), 10);
     var num = parseInt(getLinkParam('num'), 10);
     var sidx = parseInt(getLinkParam('sidx'), 10);

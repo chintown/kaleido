@@ -18,7 +18,13 @@
         <ul class="sentences">
             <? foreach ($card['sentence'] as $sentence) { ?>
             <li class="sentence"><?=html_entity_decode($sentence)?></li>
-            <? } ?>
+            <? }
+                if (count($sentence) === 0) {
+            ?>
+            <li class="sentence">(empty)</li>
+            <?php
+                }
+            ?>
         </ul>
 
 
@@ -58,6 +64,11 @@
     </li>
 </ul></div>
 
+<div id="sentence_modal" data-role="popup">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button id="sentence_submit">modify</button>
+    <button id="sentence_cancel">cancel</button>
+</div>
 <?php
     add_extra_footer('card.footer.php');
     require('template/jquery.mobile.footer.php');
