@@ -12,10 +12,10 @@
         <h3 class="word"><?=$card['word']?></h3>
         <div class="forgot"><?=$card['forgot']?></div>
 
-        <div id="map_flickr">
+<!--        <div id="map_flickr">-->
             <div class="map"></div>
             <ul class="flickr"></ul>
-        </div>
+<!--        </div>-->
 
         <ul class="sentences">
             <? foreach ($card['sentence'] as $sentence) { ?>
